@@ -13,7 +13,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         currentSpeedHorizontal = 0;
-        currentSpeedVertical = -1;
+        currentSpeedVertical = -speedVertical;
         originPoint = transform.position;
     }
 
@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("Hit Top Wall");
             currentSpeedVertical = -currentSpeedVertical;
         }
-        if(other.tag == "DeadZone")
+        if(other.tag == "Deadzone")
         {
             Debug.Log("Hit DeadZone");
             Reset();
@@ -49,11 +49,18 @@ public class PlayerAttack : MonoBehaviour
         {
             var collisionPoint = transform.position.x - other.gameObject.transform.position.x;
             Debug.Log("Hit Player at: " + collisionPoint);
-            //currentSpeedHorizontal = -currentSpeedHorizontal;
             currentSpeedVertical = -currentSpeedVertical;
             float newSpeed = collisionPoint / 1.25f * modifier;
-            //currentSpeedHorizontal = (currentSpeedHorizontal >= 0 ? speedHorizontal : -speedHorizontal) * newSpeed;
             currentSpeedHorizontal = speedHorizontal * newSpeed;
+        }
+        if(other.tag == "Brick")
+        {
+            if(other.gameObject.TryGetComponent<Brick>(out Brick brick))
+            {
+                Debug.Log("Hit Brick");
+                brick.GetHit();
+                currentSpeedVertical = -currentSpeedVertical;
+            }
         }
     }
 
@@ -61,6 +68,6 @@ public class PlayerAttack : MonoBehaviour
     {
         transform.position = originPoint;
         currentSpeedHorizontal = 0;
-        currentSpeedVertical = -1;
+        currentSpeedVertical = -speedVertical;
     }
 }
