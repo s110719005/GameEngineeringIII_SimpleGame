@@ -6,9 +6,13 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float speedVertical = 1;
     [SerializeField] private float speedHorizontal = 1;
     [SerializeField] private float modifier = 2;
+    [SerializeField] private bool isMainAttack = false;
     private float currentSpeedVertical;
     private float currentSpeedHorizontal;
     private Vector3 originPoint;
+    private bool canHitNext = true;
+    public delegate void AttackDelegate();
+    public static AttackDelegate OnDeadzoneHit;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,7 +47,16 @@ public class PlayerAttack : MonoBehaviour
         if(other.tag == "Deadzone")
         {
             Debug.Log("Hit DeadZone");
-            Reset();
+            if(isMainAttack)
+            {
+                OnDeadzoneHit?.Invoke();
+                Reset();
+            }
+            else
+            {
+                gameObject.SetActive(false);
+                //recycle
+            }
         }
         if(other.tag == "Player")
         {
@@ -52,11 +65,14 @@ public class PlayerAttack : MonoBehaviour
             currentSpeedVertical = -currentSpeedVertical;
             float newSpeed = collisionPoint / 1.25f * modifier;
             currentSpeedHorizontal = speedHorizontal * newSpeed;
+            canHitNext = true;
         }
+        if(!canHitNext) { return; }
         if(other.tag == "Brick")
         {
             if(other.gameObject.TryGetComponent<Brick>(out Brick brick))
             {
+                canHitNext = false;
                 Debug.Log("Hit Brick");
                 brick.GetHit();
                 currentSpeedVertical = -currentSpeedVertical;

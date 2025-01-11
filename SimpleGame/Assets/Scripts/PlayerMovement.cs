@@ -28,13 +28,13 @@ public class PlayerMovement : MonoBehaviour
         }
         transform.Translate(Vector3.right * Time.deltaTime * currentSpeedHorizontal);
 
-        if(transform.position.x >= 6.5f)
+        if(transform.position.x >= 6.25f)
         {
-            transform.position = new Vector3(6.5f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(6.25f, transform.position.y, transform.position.z);
         }
-        else if(transform.position.x <= -6.5f)
+        else if(transform.position.x <= -6.25f)
         {
-            transform.position = new Vector3(-6.5f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-6.25f, transform.position.y, transform.position.z);
         }
     }
 }
