@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speedHorizontal = 1;
     [SerializeField] private TextMeshProUGUI abilityText;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip magnifySound;
     private float currentSpeedHorizontal;
     private bool canMagnify = true;
     private Coroutine playerMagnifyCoroutine;
@@ -52,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator PlayerMaginify()
     {
         canMagnify = false;
+        audioSource.PlayOneShot(magnifySound);
         abilityText.color = new Color(abilityText.color.r, abilityText.color.g, abilityText.color.b, 0.2f);
         for(int i = 0; i < 100; i++)
         {
