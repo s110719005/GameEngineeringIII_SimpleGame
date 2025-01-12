@@ -54,6 +54,10 @@ public class GameManager : MonoBehaviour
         currentScore += score;
         scoreText.text = "SCORE: " + currentScore.ToString("00#");
         Debug.Log("Score: " + currentScore);
+        if(currentScore >= 452)
+        {
+            gameoverScene.SetActive(true);
+        }
     }
 
     private void OnDeadzoneHit()
