@@ -3,14 +3,6 @@ The game I made is Breakout+, it is a game based on Breakout Atari made at 1976.
 
 I use Unity 6 to make this project.
 
-![Breakout by Atari](https://prod-files-secure.s3.us-west-2.amazonaws.com/2020ba4e-0f97-47ce-9b0f-62824cbb4939/35fb1984-7b70-4f2d-a4ea-a48d713420ad/image.png)
-
-Breakout by Atari
-
-![Breakout+ by me](https://prod-files-secure.s3.us-west-2.amazonaws.com/2020ba4e-0f97-47ce-9b0f-62824cbb4939/9ab2b0aa-c1da-4d9d-ad11-aec3b802d06a/brickout2.png)
-
-Breakout+ by me
-
 ## Controls
 
 The game support keyboard and mouse
