@@ -6,6 +6,8 @@ public class Brick : MonoBehaviour
 
     public delegate void BrickDelegate(int score);
     public static BrickDelegate OnBrickHit;
+    public delegate void BrickPositionDelegate(Vector3 position);
+    public static BrickPositionDelegate OnBrickHitAt;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +23,7 @@ public class Brick : MonoBehaviour
     {
         gameObject.SetActive(false);
         OnBrickHit?.Invoke(score);
-        //invoke gethit
+        OnBrickHitAt?.Invoke(transform.position);
     }
 
     
