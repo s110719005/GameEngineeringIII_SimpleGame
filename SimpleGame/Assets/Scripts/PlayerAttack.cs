@@ -32,21 +32,27 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    public void SetSpeed(float speedHorizontal, float speedVertical)
+    {
+        currentSpeedHorizontal = speedHorizontal;
+        currentSpeedVertical = speedVertical;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "WallSide")
         {
-            Debug.Log("Hit Side Wall");
+            //Debug.Log("Hit Side Wall");
             currentSpeedHorizontal = -currentSpeedHorizontal;
         }
         if(other.tag == "WallTop")
         {
-            Debug.Log("Hit Top Wall");
+            //Debug.Log("Hit Top Wall");
             currentSpeedVertical = -currentSpeedVertical;
         }
         if(other.tag == "Deadzone")
         {
-            Debug.Log("Hit DeadZone");
+            //Debug.Log("Hit DeadZone");
             if(isMainAttack)
             {
                 OnDeadzoneHit?.Invoke();
@@ -54,14 +60,14 @@ public class PlayerAttack : MonoBehaviour
             }
             else
             {
-                gameObject.SetActive(false);
                 //recycle
+                AttackManager.instance.RecycleAttack(this);
             }
         }
         if(other.tag == "Player")
         {
             var collisionPoint = transform.position.x - other.gameObject.transform.position.x;
-            Debug.Log("Hit Player at: " + collisionPoint);
+            //Debug.Log("Hit Player at: " + collisionPoint);
             currentSpeedVertical = -currentSpeedVertical;
             float newSpeed = collisionPoint / 1.25f * modifier;
             currentSpeedHorizontal = speedHorizontal * newSpeed;
@@ -73,7 +79,7 @@ public class PlayerAttack : MonoBehaviour
             if(other.gameObject.TryGetComponent<Brick>(out Brick brick))
             {
                 canHitNext = false;
-                Debug.Log("Hit Brick");
+                //Debug.Log("Hit Brick");
                 brick.GetHit();
                 currentSpeedVertical = -currentSpeedVertical;
             }

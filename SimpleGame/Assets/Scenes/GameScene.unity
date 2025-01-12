@@ -859,6 +859,7 @@ Transform:
   - {fileID: 1775585917}
   - {fileID: 1766798371}
   - {fileID: 1983380646}
+  - {fileID: 2091289074}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &521857754
@@ -3830,6 +3831,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046550946}
   m_CullTransparentMesh: 1
+--- !u!1 &2091289073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2091289074}
+  - component: {fileID: 2091289075}
+  m_Layer: 0
+  m_Name: AttackManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2091289074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091289073}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 500121283}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2091289075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091289073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec9753230d6a66648b7f822ef2e25926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPrefab: {fileID: 1686186586320461898, guid: ff9323a49e48d794f8412e29ef39198f, type: 3}
+  maxAttack: 50
 --- !u!1001 &4251750244543696343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3898,6 +3945,22 @@ PrefabInstance:
     - target: {fileID: 1686186586320461898, guid: ff9323a49e48d794f8412e29ef39198f, type: 3}
       propertyPath: m_Name
       value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134860918647244742, guid: ff9323a49e48d794f8412e29ef39198f, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134860918647244742, guid: ff9323a49e48d794f8412e29ef39198f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134860918647244742, guid: ff9323a49e48d794f8412e29ef39198f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134860918647244742, guid: ff9323a49e48d794f8412e29ef39198f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4519334995158690327, guid: ff9323a49e48d794f8412e29ef39198f, type: 3}
       propertyPath: isMainAttack
