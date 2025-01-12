@@ -32,7 +32,6 @@ public class AttackManager : MonoBehaviour
     private void OnBrickHitAt(Vector3 position)
     {
         GenerateAttack(position);
-        GenerateAttack(position);
     }
 
     public void GenerateAttack(Vector3 position)

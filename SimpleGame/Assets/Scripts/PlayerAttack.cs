@@ -7,6 +7,10 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float speedHorizontal = 1;
     [SerializeField] private float modifier = 2;
     [SerializeField] private bool isMainAttack = false;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip hitPlate;
+    [SerializeField] private AudioClip hitBrick;
+    [SerializeField] private AudioClip lossHealth;
     private float currentSpeedVertical;
     private float currentSpeedHorizontal;
     private Vector3 originPoint;
@@ -56,6 +60,7 @@ public class PlayerAttack : MonoBehaviour
             if(isMainAttack)
             {
                 OnDeadzoneHit?.Invoke();
+                audioSource.PlayOneShot(lossHealth);
                 Reset();
             }
             else
@@ -72,6 +77,7 @@ public class PlayerAttack : MonoBehaviour
             float newSpeed = collisionPoint / 1.25f * modifier;
             currentSpeedHorizontal = speedHorizontal * newSpeed;
             canHitNext = true;
+            audioSource.PlayOneShot(hitPlate);
         }
         if(!canHitNext) { return; }
         if(other.tag == "Brick")
@@ -81,6 +87,7 @@ public class PlayerAttack : MonoBehaviour
                 canHitNext = false;
                 //Debug.Log("Hit Brick");
                 brick.GetHit();
+                audioSource.PlayOneShot(hitBrick);
                 currentSpeedVertical = -currentSpeedVertical;
             }
         }
